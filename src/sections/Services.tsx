@@ -11,12 +11,14 @@ import {
   ArrowRight 
 } from 'lucide-react';
 
+const BASE_URL = import.meta.env.BASE_URL; // ✅ IMPORTANT
+
 const services = [
   {
     id: 1,
     title: 'Demolition Services',
     description: 'Safe and efficient demolition of buildings, structures, and concrete works with modern equipment and experienced teams.',
-    image: '/images/service-demolition.jpg',
+    image: `${BASE_URL}images/service-demolition.jpg`,
     icon: Hammer,
     features: ['Building Demolition', 'Concrete Breaking', 'Site Clearance', 'Waste Removal'],
   },
@@ -24,7 +26,7 @@ const services = [
     id: 2,
     title: 'Construction Services',
     description: 'Complete construction solutions from foundation to finishing, delivering quality projects on time and within budget.',
-    image: '/images/service-construction.jpg',
+    image: `${BASE_URL}images/service-construction.jpg`,
     icon: Building2,
     features: ['Residential Construction', 'Commercial Projects', 'Renovation', 'Maintenance'],
   },
@@ -32,7 +34,7 @@ const services = [
     id: 3,
     title: 'Transport Services',
     description: 'Reliable transportation and logistics services across UAE with a modern fleet of vehicles for all cargo needs.',
-    image: '/images/service-transport.jpg',
+    image: `${BASE_URL}images/service-transport.jpg`,
     icon: Truck,
     features: ['Cargo Transport', 'Heavy Lifting', 'Equipment Moving', 'Same Day Delivery'],
   },
@@ -40,7 +42,7 @@ const services = [
     id: 4,
     title: 'Shifting & Moving',
     description: 'Professional home and office relocation services with careful handling of furniture and belongings.',
-    image: '/images/service-shifting.jpg',
+    image: `${BASE_URL}images/service-shifting.jpg`,
     icon: Home,
     features: ['Home Relocation', 'Office Moving', 'Packing Service', 'Furniture Assembly'],
   },
@@ -48,7 +50,7 @@ const services = [
     id: 5,
     title: 'AC Services',
     description: 'Expert air conditioning installation, maintenance, and repair services for residential and commercial properties.',
-    image: '/images/service-ac.jpg',
+    image: `${BASE_URL}images/service-ac.jpg`,
     icon: Wind,
     features: ['AC Installation', 'AC Repair', 'Regular Maintenance', 'Duct Cleaning'],
   },
@@ -56,7 +58,7 @@ const services = [
     id: 6,
     title: 'CCTV Installation',
     description: 'Professional security camera installation and monitoring systems to protect your property 24/7.',
-    image: '/images/service-cctv.jpg',
+    image: `${BASE_URL}images/service-cctv.jpg`,
     icon: Camera,
     features: ['HD Cameras', 'Remote Monitoring', 'System Setup', 'Technical Support'],
   },
@@ -64,7 +66,7 @@ const services = [
     id: 7,
     title: 'Labor Services',
     description: 'Skilled and unskilled workforce supply for construction, maintenance, and industrial projects across UAE.',
-    image: '/images/service-labor.jpg',
+    image: `${BASE_URL}images/service-labor.jpg`,
     icon: Users,
     features: ['Skilled Workers', 'General Labor', 'Supervisors', 'Project Teams'],
   },
@@ -83,22 +85,22 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       className="group relative"
     >
       <div className="relative h-full bg-white rounded-2xl overflow-hidden border border-gray-200 card-hover shadow-lg">
-     {/* Image */}
-<div className="relative h-48 overflow-hidden">
-  {/* Very light overlay */}
-  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent z-10" />
 
-  <img
-    src={service.image}
-    alt={service.title}
-    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-  />
+        {/* Image */}
+        <div className="relative h-48 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
 
-  {/* Icon badge */}
-  <div className="absolute top-4 left-4 z-20 w-12 h-12 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#0891B2] flex items-center justify-center shadow-lg">
-    <Icon className="w-6 h-6 text-white" />
-  </div>
-</div>
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+
+          {/* Icon badge */}
+          <div className="absolute top-4 left-4 z-20 w-12 h-12 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#0891B2] flex items-center justify-center shadow-lg">
+            <Icon className="w-6 h-6 text-white" />
+          </div>
+        </div>
 
         {/* Content */}
         <div className="p-6">
@@ -142,13 +144,15 @@ const Services = () => {
 
   return (
     <section id="services" className="relative py-20 md:py-32 bg-white">
+
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#2563EB]/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12">
-        {/* Section Header */}
+
+        {/* Header */}
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
@@ -159,17 +163,19 @@ const Services = () => {
           <span className="inline-block px-4 py-2 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/20 text-[#2563EB] text-sm font-medium mb-4">
             Our Services
           </span>
+
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">
             Comprehensive Solutions for{' '}
             <span className="text-gradient">Every Need</span>
           </h2>
+
           <p className="text-gray-600 text-lg leading-relaxed">
-            From demolition to construction, transport to technical services, 
+            From demolition to construction, transport to technical services,
             we provide end-to-end solutions with professionalism and expertise.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
